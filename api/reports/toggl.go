@@ -20,7 +20,7 @@ type projectResponse struct {
 
 // FetchEntries fetches a list of raw entries from toggl.
 func FetchEntries(token string) ([]RawEntry, error) {
-	timeAgo := time.Now().AddDate(0, 0, -5).Format(time.RFC3339)
+	timeAgo := time.Now().AddDate(0, 0, -45).Format(time.RFC3339)
 	body, err := requests.Get(togglEntryURL+"?start_date="+timeAgo, requests.SetBasicAuth(token, "api_token"))
 
 	if err != nil {
