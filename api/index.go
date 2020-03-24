@@ -12,6 +12,7 @@ import (
 func Handler(w http.ResponseWriter, r *http.Request) {
 	token := r.URL.Query().Get("token")
 	report, _ := reports.GetTogglReport(token)
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 	fmt.Fprintf(w, report)
 }
 
