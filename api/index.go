@@ -1,4 +1,5 @@
 // package main
+
 package handler
 
 import (
@@ -15,6 +16,13 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 }
 
 // func main() {
-// 	http.HandleFunc("/api/report", Handler)
-// 	http.ListenAndServe(":80", nil)
+// 	http.HandleFunc("/api", Handler)
+// 	fs := http.FileServer(http.Dir("../"))
+// 	http.Handle("/", fs)
+
+// 	log.Println("Listening on :80...")
+// 	err := http.ListenAndServe(":80", nil)
+// 	if err != nil {
+// 		log.Fatal(err)
+// 	}
 // }

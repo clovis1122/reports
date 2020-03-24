@@ -1,13 +1,44 @@
 <!DOCTYPE html>
 <html>
-    <body>
-        <h1>Extra Hours</h1>
-        <p>A simple app to generate the extra hours report.</p>
-        <form onSubmit={onFormSubmit}>
-          <label>Insert Toggl Token: <input type="text" ref={tokenInput} required /></label>
-          <button type="submit">Submit!</button>
-        </form>
-        <textarea readonly style="margin: 0; width: 300px; resize: none;"></textarea>
-        <button style="display:block; margin-top: 20px 0 40px;">Copy to Clipboard!</button>
-    </body>
+
+<body>
+  <main>
+    <h1>Extra Hours</h1>
+    <p>A simple app to generate the extra hours report.</p>
+    <form id="form">
+      <label>Insert Toggl Token: <input type="text" id="token" required /></label>
+      <button type="submit">Submit!</button>
+    </form>
+    <textarea id="textarea" readonly style="margin: 0; width: 300px; resize: none;"></textarea>
+    <button id="copy" style="display:block; margin-top: 20px 0 40px;">Copy to Clipboard!</button>
+  </main>
+  <script>
+    const form = document.getElementById("form");
+    const text = document.getElementById("textarea");
+    const tokenInput = document.getElementById("token");
+    const textarea = document.getElementById("textarea");
+    const copyBtn = document.getElementById("copy");
+    form.onsubmit = function (event) {
+      event.preventDefault();
+      fetch("/api?token=" + tokenInput.value)
+        .then(response => response.text())
+        .then(response => {
+          text.innerHTML = response;
+          textarea.focus();
+          textarea.select();
+        });
+    }
+
+    copyBtn.onclick = function (event) {
+      event.preventDefault();
+      textarea.focus();
+      textarea.select();
+      document.execCommand("copy");
+      copyBtn.innerHTML = "Copied!";
+
+      setTimeout(() => { copyBtn.innerHTML = "Copy to Clipboard!"; }, 1000);
+    }
+  </script>
+</body>
+
 </html>
