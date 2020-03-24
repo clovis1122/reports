@@ -1,0 +1,13 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "api/index.go",
+            "use": "@now/go"
+        },
+        {
+            "src": "index.html",
+            "use": "@now/static"
+        }
+    ]
+}

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1>Extra Hours</h1>
+        <p>A simple app to generate the extra hours report.</p>
+        <form onSubmit={onFormSubmit}>
+          <label>Insert Toggl Token: <input type="text" ref={tokenInput} required /></label>
+          <button type="submit">Submit!</button>
+        </form>
+        <textarea readonly style="margin: 0; width: 300px; resize: none;"></textarea>
+        <button style="display:block; margin-top: 20px 0 40px;">Copy to Clipboard!</button>
+    </body>
+</html>
